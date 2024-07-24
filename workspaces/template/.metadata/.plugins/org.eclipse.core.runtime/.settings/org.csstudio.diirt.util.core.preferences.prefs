@@ -1,3 +1,4 @@
+diirt.ca.addr.list=localhost UUT_IP
 diirt.ca.max.array.size=500000
 diirt.default.initialized=true
 eclipse.preferences.version=1
