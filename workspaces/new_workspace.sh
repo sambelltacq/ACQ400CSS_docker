@@ -2,9 +2,14 @@
 
 #generate new workspace from template
 #Usage: ./new_workspace.sh acq2106_123
+#Usage: ./new_workspace.sh acq2106_123 10.12.1.123
 
 new_uut=$1
-template_uut='acq2106_000'
+static_ip=${2:-$1}
+
+echo $new_uut
+echo $static_ip
+
 wdir=$(dirname $(realpath "${BASH_SOURCE[0]}" ))
 
 #Check for arg
@@ -22,6 +27,7 @@ fi
 #Copy and update new workspace
 cp -r $wdir/template "$wdir/$new_uut/"
 cd "$wdir/$new_uut/"
-find . -type f -exec sed -i 's/'$template_uut'/'$new_uut'/g' {} +
+find . -type f -exec sed -i 's/'UUT_HOSTNAME'/'$new_uut'/g' {} +
+find . -type f -exec sed -i 's/'UUT_IP'/'$static_ip'/g' {} +
 
 echo "Workspace ${new_uut} Created"
