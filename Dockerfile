@@ -21,7 +21,6 @@ RUN wget https://github.com/sambelltacq/ACQ400CSS_docker/releases/download/d-tac
 RUN tar -xzf cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN rm cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN ln -s /usr/lib/jvm/java-8-openjdk-amd64/jre cs-studio/
-RUN echo "osgi.instance.area.default=@user.home/workspaces/<UUT HERE>" >> cs-studio/configuration/config.ini
 RUN echo "enabled=false" >> cs-studio/p2/org.eclipse.equinox.p2.engine/profileRegistry/DefaultProfile.profile/.data/.settings/org.eclipse.equinox.p2.ui.sdk.scheduler.prefs #disables autoupdate
 RUN ln -s /d-tacq/cs-studio/cs-studio /usr/local/bin/cs-studio
 
@@ -31,5 +30,7 @@ RUN git clone https://github.com/D-TACQ/ACQ400CSS
 #setup home dir
 WORKDIR /home/${USER_NAME}
 RUN ln -s /d-tacq $HOME/PROJECTS
+COPY scripts scripts
+
 
 CMD ["/bin/bash"]

@@ -2,6 +2,9 @@
 
 IMAGE="cs-studio"
 
+UUT=$1
+STATIC_IP=$2
+
 #Erase all existing images
 #sudo docker rmi -f $(sudo docker images -aq)
 
@@ -26,5 +29,5 @@ sudo docker run -it \
   --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
   --volume="./workspaces:$HOME/workspaces" \
   $IMAGE \
-  cs-studio > /dev/null
-  #/bin/bash #for debug
+  /bin/bash -c "./scripts/workspace_init.sh ${UUT} ${STATIC_IP} && cs-studio > /dev/null 2>&1"
+  #/bin/bash -c "./scripts/workspace_init.sh ${UUT} ${STATIC_IP} && /bin/bash"
