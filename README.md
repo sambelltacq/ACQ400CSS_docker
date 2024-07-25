@@ -15,7 +15,7 @@ do not run workspace_init.sh
 
 2) Clone this repo:
 	```
-	git clone https://github.com/sambelltacq/ACQ400CSS_docker
+	git clone https://github.com/D-TACQ/ACQ400CSS_docker
 	cd ACQ400CSS_docker
 	```
 3) Run cs-studio
