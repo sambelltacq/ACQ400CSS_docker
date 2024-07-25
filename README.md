@@ -29,7 +29,8 @@ do not run workspace_init.sh
 	diy setup
 	./cs-studio_docker.sh
 	```
-	First time setup might take a while
+	First time setup might take a while.
+    [starting-first-workspace-step-by-step.pdf](starting-first-workspace-step-by-step.pdf)
 
 	if using static ip must delete any previous workspaces
 
