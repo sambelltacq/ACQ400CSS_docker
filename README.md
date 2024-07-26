@@ -66,12 +66,12 @@ A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-u
 5) Run cs-studio
 	```
 	with hostname
-	./cs-studio_docker.sh acq2106_123
+	./cs-studio_docker.cmd acq2106_123
 
 	with hostname and static ip 
-	./cs-studio_docker.sh acq2106_123 10.12.1.123
+	./cs-studio_docker.cmd acq2106_123 10.12.1.123
 
 	diy setup
-	./cs-studio_docker.sh
+	./cs-studio_docker.cmd
 	```
 	First time setup might take a while
