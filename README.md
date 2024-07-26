@@ -46,6 +46,32 @@ A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-u
 
 ### Windows
 
-TODO
+1) Install docker desktop:
+	[Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
 
-DOCKERDESKTOP + VcXsrv?
+2) Install git:
+	[Git for windows](https://git-scm.com/download/win)
+
+3) Install VcXsrv:
+	[VcXsrv](https://sourceforge.net/projects/vcxsrv/)
+
+4) Open powershell or cmd
+
+5) Clone this repo:
+	```
+	git clone https://github.com/sambelltacq/ACQ400CSS_docker
+	cd ACQ400CSS_docker
+	```
+	
+5) Run cs-studio
+	```
+	with hostname
+	./cs-studio_docker.sh acq2106_123
+
+	with hostname and static ip 
+	./cs-studio_docker.sh acq2106_123 10.12.1.123
+
+	diy setup
+	./cs-studio_docker.sh
+	```
+	First time setup might take a while
