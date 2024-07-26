@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 IMAGE="cs-studio"
-
 UUT=$1
-STATIC_IP=$2
 
 #Erase all existing images
 #sudo docker rmi -f $(sudo docker images -aq)
@@ -20,14 +18,21 @@ if [ $? -eq 1 ]; then
     .
 fi
 
+#Get ip from hostname
+IP=$2
+if [ -z "$2" ]; then
+    IP=$(ping -q -c 1 -t 1 $UUT | grep PING | sed -e "s/).*//" | sed -e "s/.*(//")
+fi
+
+echo "UUT=${UUT} IP=${IP}"
+
 #Run Image
 sudo docker run -it \
-  --rm \
-  -h $(hostname) \
-  --network host \
-  --env="DISPLAY=unix$DISPLAY" \
-  --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
-  --volume="./workspaces:$HOME/workspaces" \
-  $IMAGE \
-  /bin/bash -c "./scripts/workspace_init.sh ${UUT} ${STATIC_IP} && cs-studio > /dev/null 2>&1"
-  #/bin/bash -c "./scripts/workspace_init.sh ${UUT} ${STATIC_IP} && /bin/bash"
+    --rm \
+    -h $(hostname) \
+    --network host \
+    --env="DISPLAY=unix$DISPLAY" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
+    --volume="./workspaces:$HOME/workspaces" \
+    $IMAGE \
+    /bin/bash -c "./scripts/workspace_init.sh ${UUT} ${IP} && cs-studio > /dev/null 2>&1"
