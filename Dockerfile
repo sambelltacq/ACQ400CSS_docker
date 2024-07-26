@@ -31,7 +31,7 @@ WORKDIR /home/${USER_NAME}
 RUN ln -s /d-tacq $HOME/PROJECTS
 COPY scripts scripts
 
-ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir #needed for windows
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir
 RUN mkdir -p /tmp/xdg-runtime-dir && chmod 777 /tmp/xdg-runtime-dir
 
 CMD ["/bin/bash"]
