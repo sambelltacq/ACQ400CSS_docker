@@ -60,5 +60,5 @@ docker run -it ^
   --env="DISPLAY=host.docker.internal:0.0" ^
   --volume="%cd%\workspaces:/home/%USERNAME%/workspaces" ^
   %IMAGE% ^
-  /bin/bash -c "./scripts/workspace_init.sh %UUT% %IP% && cs-studio > /dev/null 2>&1
+  /bin/bash -c "./scripts/workspace_init.sh %UUT% %IP% && cs-studio > /dev/null 2>&1"
 
