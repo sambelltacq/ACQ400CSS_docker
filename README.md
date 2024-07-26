@@ -4,7 +4,7 @@ This repo creates a docker ubuntu image and installs cs-studio into it
 
 Workspaces are stored in the workspaces dir
 
-do not run workspace_init.sh
+A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-uut workspace.
 
 ## How to install
 ### Linux 
@@ -15,7 +15,7 @@ do not run workspace_init.sh
 
 2) Clone this repo:
 	```
-	git clone https://github.com/sambelltacq/ACQ400CSS_docker
+	git clone https://github.com/D-TACQ/ACQ400CSS_docker
 	cd ACQ400CSS_docker
 	```
 3) Run cs-studio
@@ -29,9 +29,10 @@ do not run workspace_init.sh
 	diy setup
 	./cs-studio_docker.sh
 	```
-	First time setup might take a while
+	First time setup might take a while. 
+    cs-studio may complain on first start .. see: [starting-first-workspace-step-by-step.pdf](starting-first-workspace-step-by-step.pdf)
 
-	if using static ip must delete any previous workspaces
+	if using static ip please delete any previous workspaces
 
 4) *BONUS* Install on path
 	```

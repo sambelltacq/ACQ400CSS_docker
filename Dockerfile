@@ -16,8 +16,7 @@ USER ${USER_NAME}
 
 #Install cs-studio
 WORKDIR /d-tacq/
-#RUN curl -O https://www.d-tacq.com/tmp/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz #slow :(
-RUN wget https://github.com/sambelltacq/ACQ400CSS_docker/releases/download/d-tacq/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
+RUN wget https://github.com/D-TACQ/ACQ400CSS_docker/releases/download/base/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN tar -xzf cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN rm cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN ln -s /usr/lib/jvm/java-8-openjdk-amd64/jre cs-studio/
@@ -36,3 +35,4 @@ ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime-dir #needed for windows
 RUN mkdir -p /tmp/xdg-runtime-dir && chmod 777 /tmp/xdg-runtime-dir
 
 CMD ["/bin/bash"]
+
