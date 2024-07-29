@@ -21,7 +21,7 @@ fi
 #Get ip from hostname
 IP=$2
 if [ -z "$2" ]; then
-    IP=$(ping -q -c 1 -t 1 $UUT | grep PING | sed -e "s/).*//" | sed -e "s/.*(//")
+    IP=$(ping -q -c 1 -t 1 $UUT 2>/dev/null | grep PING | sed -e "s/).*//" | sed -e "s/.*(//")
 fi
 
 echo "UUT=${UUT} IP=${IP}"
