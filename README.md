@@ -30,9 +30,6 @@ A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-u
 	./cs-studio_docker.sh
 	```
 	First time setup might take a while. 
-    cs-studio may complain on first start .. see: [starting-first-workspace-step-by-step.pdf](starting-first-workspace-step-by-step.pdf)
-
-	if using static ip please delete any previous workspaces
 
 4) *BONUS* Install on path
 	```
@@ -63,7 +60,7 @@ A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-u
 	cd ACQ400CSS_docker
 	```
 	
-5) Run cs-studio
+6) Run cs-studio
 	```
 	with hostname
 	./cs-studio_docker.cmd acq2106_123
@@ -75,3 +72,22 @@ A single script "./cs-studio_docker.sh" creates the cs-studio instance and per-u
 	./cs-studio_docker.cmd
 	```
 	First time setup might take a while
+
+7)  *BONUS* Create Shortcuts
+
+
+	* Right click cs-studio_docker.cmd and click create shortcut 
+
+	* Right Click created shortcut and click properties
+
+	* Append UUT hostname and if needed IP to end of target path and click OK i.e.
+		 ```C:\Users\sam\PROJECTS\ACQ400CSS_docker\cs-studio_docker.cmd acq2106_123```
+	* Rename shortcut to something descriptive i.e. 
+	```start_css_acq2106_123 ```
+	* Repeat for each UUT as needed		
+
+## Problems
+
+* cs-studio may complain on first start .. see: [starting-first-workspace-step-by-step.pdf](starting-first-workspace-step-by-step.pdf)
+
+* after updating to new release existing image must be purged ```docker rmi -f $(docker images -aq)```
