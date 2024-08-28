@@ -48,14 +48,6 @@ echo "UUT=%UUT% IP=%IP%"
 docker run -it ^
   --rm ^
   -h %COMPUTERNAME% ^
-  -p 53:53 ^
-  -p 5064:5064/udp ^
-  -p 5064:5064/tcp ^
-  -p 5065:5065/udp ^
-  -p 5075:5075/udp ^
-  -p 5075:5075/tcp ^
-  -p 8080:8080 ^
-  -p 8443:8443 ^
   --network bridge ^
   --env="DISPLAY=host.docker.internal:0.0" ^
   --volume="%cd%\workspaces:/home/%USERNAME%/workspaces" ^
