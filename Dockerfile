@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 #install require packages
 RUN apt-get update
-RUN apt-get install -y xorg openjdk-8-jdk git wget
+RUN apt-get install -y xorg openjdk-8-jdk git wget curl
 
 #Maintenance
 RUN userdel -r ubuntu
@@ -16,9 +16,12 @@ USER ${USER_NAME}
 
 #Install cs-studio
 WORKDIR /d-tacq/
-RUN wget https://github.com/D-TACQ/ACQ400CSS_docker/releases/download/base/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
+
+RUN curl -L -O https://github.com/D-TACQ/ACQ400CSS_docker/releases/download/base/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
+#RUN wget https://www.d-tacq.com/tmp/cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
+#COPY cs-studio-4.5.9-linux.gtk.x86_64.tar.gz .
+
 RUN tar -xzf cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
-RUN rm cs-studio-4.5.9-linux.gtk.x86_64.tar.gz
 RUN ln -s /usr/lib/jvm/java-8-openjdk-amd64/jre cs-studio/
 RUN echo "enabled=false" >> cs-studio/p2/org.eclipse.equinox.p2.engine/profileRegistry/DefaultProfile.profile/.data/.settings/org.eclipse.equinox.p2.ui.sdk.scheduler.prefs #disables autoupdate
 RUN ln -s /d-tacq/cs-studio/cs-studio /usr/local/bin/cs-studio
