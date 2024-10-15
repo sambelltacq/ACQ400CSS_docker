@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set "IMAGE=cs-studio"
+set "IMAGE=cs-studio_%USERNAME%"
 set "UUT=%1"
 set "vcxsrv=C:\Program Files\VcXsrv\vcxsrv.exe"
 
