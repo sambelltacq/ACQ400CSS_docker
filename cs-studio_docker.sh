@@ -10,6 +10,8 @@ USER_ID=$(id --user)
 GROUP_NAME=$(id --group --name)
 GROUP_ID=$(id --group)
 
+ROOTDIR="$(dirname -- "$(readlink -f "${BASH_SOURCE}")")"
+
 IMAGE="cs-studio_${USER_NAME}"
 
 
@@ -40,6 +42,6 @@ sudo docker run -it \
     --network host \
     --env="DISPLAY=unix$DISPLAY" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
-    --volume="./workspaces:$HOME/workspaces" \
+    --volume="${ROOTDIR}/workspaces:$HOME/workspaces" \
     $IMAGE \
     /bin/bash -c "./scripts/workspace_init.sh ${UUT} ${IP} && cs-studio > /dev/null 2>&1"
