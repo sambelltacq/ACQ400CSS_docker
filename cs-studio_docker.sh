@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 
-IMAGE="cs-studio"
 UUT=$1
 
 #Erase all existing images
 #sudo docker rmi -f $(sudo docker images -aq)
 
+USER_NAME=$(id --user --name)
+USER_ID=$(id --user)
+GROUP_NAME=$(id --group --name)
+GROUP_ID=$(id --group)
+
+IMAGE="cs-studio_${USER_NAME}"
+
+
 #Build image if no existing image
 sudo docker image inspect "$IMAGE" &> /dev/null
 if [ $? -eq 1 ]; then
     sudo docker build \
-    --build-arg USER_NAME=$(id --user --name) \
-    --build-arg USER_ID=$(id --user) \
-    --build-arg GROUP_NAME=$(id --group --name) \
-    --build-arg GROUP_ID=$(id --group) \
+    --build-arg USER_NAME=$USER_NAME \
+    --build-arg USER_ID=$USER_ID \
+    --build-arg GROUP_NAME=$GROUP_NAME \
+    --build-arg GROUP_ID=$GROUP_ID \
     --tag $IMAGE \
     .
 fi
